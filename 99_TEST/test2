@@ -1,0 +1,25 @@
+$arr1 = array ("сотр1","сотр2","сотр3");
+$arr2 = array ("сотр4","сотр5","сотр6");
+
+/**
+ * Test
+ *
+ * @param array $a Comment here
+ *
+ * @return void
+ */
+function test($a)
+{
+    echo "<table border=1><tr><td>";
+    echo "<table>";
+    foreach ($a as $key => $val) {
+        echo "<tr><td>" . $key . "</td></tr>";
+    }
+    echo "</table></td><td><table>";
+    foreach ($a as $val) {
+        echo "<tr><td>" . $val . "</td></tr>";
+    }
+    echo "</table></td></table";
+}
+
+test($arr1);
