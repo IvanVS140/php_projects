@@ -94,8 +94,7 @@ function squareTrapeze(&$a)
     array_walk(
         $a,
         function (&$i) {
-            $i_ind = array_values($i);
-            $i["s"] = 0.5 * ($i_ind[0] + $i_ind[1]) * $i_ind[2];
+            $i["s"] = 0.5 * (reset($i) + array_values($i)[1]) * end($i);
         }
     );
 }
