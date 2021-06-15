@@ -70,8 +70,10 @@ echo NEW_LINE;
  *
  * @return array
  */
-function createTrapeze(array $a = array(1, 2, 3, 4, 5, 6, 7, 8, 9)): array
-{
+function createTrapeze(
+    array $a = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+    18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30)
+): array {
     $a_split = array_chunk($a, 3);
     foreach ($a_split as $sub_array) {
         array_push($a_split, array_combine(array("a", "b", "c"), $sub_array));
