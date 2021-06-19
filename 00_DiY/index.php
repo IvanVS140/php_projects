@@ -105,5 +105,60 @@ $my_trapeze = createTrapeze();
 squareTrapeze($my_trapeze);
 print_r($my_trapeze);
 
+echo NEW_LINE;
+echo NEW_LINE;
+echo "-= NOW CODING =-";
+echo NEW_LINE;
+
+/**
+ * Get size for limit
+ *
+ * @param array $a Comment here
+ * @param mixed $b Comment here
+ *
+ * @return array
+ */
+function getSizeForLimit($a, $b): array
+{
+    foreach (array_reverse($a) as $sub_array) {
+        if (end($sub_array) > $b) {
+            continue;
+        }
+        return $sub_array;
+    }
+}
+
+print_r(getSizeForLimit($my_trapeze, 28));
+
+echo NEW_LINE;
+echo "-= NOW CODING =-";
+echo NEW_LINE;
+echo NEW_LINE;
+
+/**
+ * Print trapeze
+ *
+ * @param array $a Comment here
+ *
+ * @return void
+ */
+function printTrspeze($a): void
+{
+    echo "
+    <table width=200 border=1 bordercolor=darkgrey cellspacing=0 cellpadding=5>
+    <th>";
+    echo implode('<th>', array_keys(current($a)));
+    foreach ($a as $row) {
+        echo "<tr><td>";
+        if (end($row) != intval(end($row)) || end($row) % 2 != 0) {
+            echo "<i><b>" . implode('</td><td><i><b>', $row);
+        } else {
+            echo "<sub>" . implode('</td><td><sub>', $row);
+        }
+    }
+}
+
+printTrspeze($my_trapeze);
+
 // phpcs:ignore PSR2.Files.ClosingTag.NotAllowed
 ?>
