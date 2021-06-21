@@ -18,7 +18,7 @@
  * Implements hook_help().
  */
 
-define("NEW_LINE", "<br/>");
+define("EMPTY_LINE", "<br><br>");
 echo "<pre>";
 
 /**
@@ -61,7 +61,7 @@ function findSimple(int $a = 2, int $b = 20): array
 }
 
 print_r(findSimple());
-echo NEW_LINE;
+echo EMPTY_LINE;
 
 /**
  * Create trapeze
@@ -82,7 +82,7 @@ function createTrapeze(
 }
 
 print_r(createTrapeze());
-echo NEW_LINE;
+echo EMPTY_LINE;
 
 /**
  * Square trapeze
@@ -105,10 +105,7 @@ $my_trapeze = createTrapeze();
 squareTrapeze($my_trapeze);
 print_r($my_trapeze);
 
-echo NEW_LINE;
-echo NEW_LINE;
-echo "-= NOW CODING =-";
-echo NEW_LINE;
+echo EMPTY_LINE;
 
 /**
  * Get size for limit
@@ -128,12 +125,17 @@ function getSizeForLimit($a, $b): array
     }
 }
 
-print_r(getSizeForLimit($my_trapeze, 28));
+print_r(getSizeForLimit($my_trapeze, 201));
+echo EMPTY_LINE;
 
-echo NEW_LINE;
 echo "-= NOW CODING =-";
-echo NEW_LINE;
-echo NEW_LINE;
+echo EMPTY_LINE;
+
+
+
+echo EMPTY_LINE;
+echo "-= NOW CODING =-";
+echo EMPTY_LINE;
 
 /**
  * Print trapeze
@@ -146,14 +148,16 @@ function printTrspeze($a): void
 {
     echo "
     <table width=200 border=1 bordercolor=darkgrey cellspacing=0 cellpadding=5>
-    <th>";
+    <th>#<th>";
     echo implode('<th>', array_keys(current($a)));
-    foreach ($a as $row) {
+    foreach ($a as $i => $row) {
         echo "<tr><td>";
         if (end($row) != intval(end($row)) || end($row) % 2 != 0) {
-            echo "<i><b>" . implode('</td><td><i><b>', $row);
+            echo "<i><b>" . $i = $i + 1 . "<td><i><b>" .
+            implode('</td><td><i><b>', $row);
         } else {
-            echo "<sub>" . implode('</td><td><sub>', $row);
+            echo "<sub>" . $i = $i + 1 . "<td><sub>" .
+            implode('</td><td><sub>', $row);
         }
     }
 }
