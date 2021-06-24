@@ -91,7 +91,7 @@ echo EMPTY_LINE;
  *
  * @return void
  */
-function squareTrapeze(&$a)
+function squareTrapeze(array &$a)
 {
     array_walk(
         $a,
@@ -111,21 +111,37 @@ echo EMPTY_LINE;
  * Get size for limit
  *
  * @param array $a Comment here
- * @param mixed $b Comment here
+ * @param mixed $b (float & int types acceptable) Comment here
  *
  * @return array
  */
-function getSizeForLimit($a, $b): array
+function getSizeForLimit(array $a, $b): array
 {
-    foreach (array_reverse($a) as $sub_array) {
-        if (end($sub_array) > $b) {
+    foreach (array_reverse($a) as $trapeze) {
+        if (end($trapeze) > $b) {
             continue;
         }
-        return $sub_array;
+        return $trapeze;
     }
 }
 
-print_r(getSizeForLimit($my_trapeze, 201));
+$test_limits = array(201, 202, 202.4, 202.5, 202.7, 203, 100500);
+foreach ($test_limits as $i) {
+    $square = end(getSizeForLimit($my_trapeze, $i));
+    $passed = "Expected [s] => $square\nTest passed!\n";
+    echo "<b>" . $i . "</b> - square limit\n";
+    if ($i <= 202.4 && $square == 126) {
+        echo $passed;
+    } elseif ($i >= 202.5 && $i <= 203 && $square == 202.5) {
+        echo $passed;
+    } elseif ($i == 100500 && $square == 855) {
+        echo $passed;
+    } else {
+        echo "Test failure\n";
+    }
+    print_r(getSizeForLimit($my_trapeze, $i));
+    echo "\n";
+}
 echo EMPTY_LINE;
 
 echo "-= NOW CODING =-";
@@ -144,20 +160,20 @@ echo EMPTY_LINE;
  *
  * @return void
  */
-function printTrspeze($a): void
+function printTrspeze(array $a): void
 {
     echo "
     <table width=200 border=1 bordercolor=darkgrey cellspacing=0 cellpadding=5>
     <th>#<th>";
     echo implode('<th>', array_keys(current($a)));
-    foreach ($a as $i => $row) {
+    foreach ($a as $key => $val) {
         echo "<tr><td>";
-        if (end($row) != intval(end($row)) || end($row) % 2 != 0) {
-            echo "<i><b>" . $i = $i + 1 . "<td><i><b>" .
-            implode('</td><td><i><b>', $row);
+        if (end($val) != intval(end($val)) || end($val) % 2 != 0) {
+            echo "> <i>" . $key = $key + 1 . "<td><i><b>" .
+            implode('</td><td><i><b>', $val);
         } else {
-            echo "<sub>" . $i = $i + 1 . "<td><sub>" .
-            implode('</td><td><sub>', $row);
+            echo "&nbsp;&nbsp;" . $key = $key + 1 . "<td><sub>" .
+            implode('</td><td><sub>', $val);
         }
     }
 }
