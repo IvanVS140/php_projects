@@ -129,7 +129,7 @@ $test_limits = array(201, 202, 202.4, 202.5, 202.7, 203, 100500);
 foreach ($test_limits as $i) {
     $square = end(getSizeForLimit($my_trapeze, $i));
     $passed = "Expected [s] => $square\nTest passed!\n";
-    echo "<b>" . $i . "</b> - square limit\n";
+    echo "Square limit - <b>" . $i . "</b>\n";
     if ($i <= 202.4 && $square == 126) {
         echo $passed;
     } elseif ($i >= 202.5 && $i <= 203 && $square == 202.5) {
@@ -144,10 +144,45 @@ foreach ($test_limits as $i) {
 }
 echo EMPTY_LINE;
 
+/**
+ * Get minimum
+ *
+ * @param array $a Comment here
+ *
+ * @return mixed
+ */
+function getMin($a)
+{
+    $a = array_merge(array_keys($a), array_values($a));
+    sort($a);
+    foreach ($a as $i) {
+        if (gettype($i) != "integer" && gettype($i) != "double") {
+            continue;
+        }
+        return $i;
+    }
+}
+
+$my_array = array(
+    53 => 66,
+    "qwe" => 183,
+    109 => 47,
+    "asd" => 48,
+    38 => 161,
+    "zxc" => 30.999,
+    129 => "qux",
+    104 => "quux",
+    29 => "quuux",
+    117 => 66.18,
+    69 => 29.001,
+    132 => 133.3,
+);
+
+echo getMin($my_array);
+
+echo EMPTY_LINE;
 echo "-= NOW CODING =-";
 echo EMPTY_LINE;
-
-
 
 echo EMPTY_LINE;
 echo "-= NOW CODING =-";
