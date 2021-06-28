@@ -18,6 +18,7 @@
  * Implements hook_help().
  */
 
+define("NEW_LINE", "<br/>");
 define("EMPTY_LINE", "<br><br>");
 echo "<pre>";
 
@@ -142,17 +143,31 @@ foreach ($test_limits as $i) {
     print_r(getSizeForLimit($my_trapeze, $i));
     echo "\n";
 }
-echo EMPTY_LINE;
+echo NEW_LINE;
 
 /**
  * Get minimum
  *
  * @param array $a Comment here
  *
- * @return mixed
+ * @return mixed int or float
  */
-function getMin($a)
-{
+function getMin(
+    array $a = array(
+        53 => 66,
+        "qwe" => 183,
+        109 => 47,
+        "asd" => 48,
+        38 => 161,
+        "zxc" => 30.999,
+        129 => "qux",
+        104 => "quux",
+        29 => "quuux",
+        117 => 66.18,
+        69 => 29.001,
+        132 => 133.3,
+    )
+) {
     $a = array_merge(array_keys($a), array_values($a));
     sort($a);
     foreach ($a as $i) {
@@ -163,29 +178,7 @@ function getMin($a)
     }
 }
 
-$my_array = array(
-    53 => 66,
-    "qwe" => 183,
-    109 => 47,
-    "asd" => 48,
-    38 => 161,
-    "zxc" => 30.999,
-    129 => "qux",
-    104 => "quux",
-    29 => "quuux",
-    117 => 66.18,
-    69 => 29.001,
-    132 => 133.3,
-);
-
-echo getMin($my_array);
-
-echo EMPTY_LINE;
-echo "-= NOW CODING =-";
-echo EMPTY_LINE;
-
-echo EMPTY_LINE;
-echo "-= NOW CODING =-";
+echo "Minimum number is: " . getMin();
 echo EMPTY_LINE;
 
 /**
@@ -211,9 +204,19 @@ function printTrspeze(array $a): void
             implode('</td><td><sub>', $val);
         }
     }
+    echo "</table>";
 }
 
 printTrspeze($my_trapeze);
+echo EMPTY_LINE;
+
+echo "-= NOW CODING =-";
+echo EMPTY_LINE;
+
+
+
+echo EMPTY_LINE;
+echo "-= NOW CODING =-";
 
 // phpcs:ignore PSR2.Files.ClosingTag.NotAllowed
 ?>
