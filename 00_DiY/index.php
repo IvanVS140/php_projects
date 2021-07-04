@@ -130,7 +130,7 @@ $test_limits = array(201, 202, 202.4, 202.5, 202.7, 203, 100500);
 foreach ($test_limits as $i) {
     $square = end(getSizeForLimit($my_trapeze, $i));
     $passed = "Expected [s] => $square\nTest passed!\n";
-    echo "Square limit - <b>" . $i . "</b>\n";
+    echo "Square limit: <b>" . $i . "</b>\n";
     if ($i <= 202.4 && $square == 126) {
         echo $passed;
     } elseif ($i >= 202.5 && $i <= 203 && $square == 202.5) {
@@ -178,7 +178,7 @@ function getMin(
     }
 }
 
-echo "Minimum number is: " . getMin();
+echo "Minimum number is: <b>" . getMin() . "</b>";
 echo EMPTY_LINE;
 
 /**
@@ -210,13 +210,13 @@ function printTrspeze(array $a): void
 printTrspeze($my_trapeze);
 echo EMPTY_LINE;
 
-echo "-= NOW CODING =-";
+echo "<b>-= NOW CODING =-</b>";
 echo EMPTY_LINE;
 
 
 
 echo EMPTY_LINE;
-echo "-= NOW CODING =-";
+echo "<b>-= NOW CODING =-</b>";
 
 // phpcs:ignore PSR2.Files.ClosingTag.NotAllowed
 ?>
