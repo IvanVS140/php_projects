@@ -18,6 +18,8 @@
  * Implements hook_help().
  */
 
+namespace TaskOne;
+
 define("NEW_LINE", "<br/>");
 define("EMPTY_LINE", "<br><br>");
 echo "<pre>";
@@ -105,7 +107,6 @@ function squareTrapeze(array &$a)
 $my_trapeze = createTrapeze();
 squareTrapeze($my_trapeze);
 print_r($my_trapeze);
-
 echo EMPTY_LINE;
 
 /**
@@ -210,13 +211,93 @@ function printTrspeze(array $a): void
 printTrspeze($my_trapeze);
 echo EMPTY_LINE;
 
-echo "<b>-= NOW CODING =-</b>";
-echo EMPTY_LINE;
+/**
+ * Base math
+ *
+ * @category Tag_In_Class_Comment
+ * @package  Tag_In_Class_Comment
+ * @author   Display Name <username@example.com>
+ * @license  http://www.opensource.org/licenses/ Test
+ * @link     http://www.example.com
+ */
+abstract class BaseMath /* phpcs:ignore
+PSR1.Classes.ClassDeclaration.MultipleClasses */
+{
+    /**
+     * Expression №1
+     *
+     * @return mixed Comment here
+     */
+    public function exp1()
+    {
+        return $this->a * ($this->b ^ $this->c);
+    }
+    /**
+     * Expression №2
+     *
+     * @return mixed Comment here
+     */
+    public function exp2()
+    {
+        return ($this->a / $this->b) ^ $this->c;
+    }
+    /**
+     * Expression №1
+     *
+     * @return void Comment here
+     */
+    abstract protected function getValue();
+}
 
+/**
+ * Function №1
+ *
+ * @category Tag_In_Class_Comment
+ * @package  Tag_In_Class_Comment
+ * @author   Display Name <username@example.com>
+ * @license  http://www.opensource.org/licenses/ Test
+ * @link     http://www.example.com
+ */
+class F1 extends BaseMath /* phpcs:ignore
+PSR1.Classes.ClassDeclaration.MultipleClasses */
+{
+    protected $a;
+    protected $b;
+    protected $c;
+    /**
+     * Constructor
+     *
+     * @param mixed $a Comment here
+     * @param mixed $b Comment here
+     * @param mixed $c Comment here
+     *
+     * @return mixed
+     */
+    public function __construct($a, $b, $c)
+    {
+        $this->a = $a;
+        $this->b = $b;
+        $this->c = $c;
+    }
+    /**
+     * Get value
+     *
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return
+        ($this->a *
+            ($this->b ^ $this->c) + ((($this->a / $this->c) ^ $this->b) % 3) ^
+            min($this->a, $this->b, $this->c)
+        );
+    }
+}
 
-
-echo EMPTY_LINE;
-echo "<b>-= NOW CODING =-</b>";
+$nums = new F1(6, 4, 2);
+echo $nums->exp1() . "\n";
+echo $nums->exp2() . "\n";
+echo $nums->getValue() . "\n";
 
 // phpcs:ignore PSR2.Files.ClosingTag.NotAllowed
 ?>
