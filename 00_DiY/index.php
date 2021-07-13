@@ -189,7 +189,7 @@ echo EMPTY_LINE;
  *
  * @return void
  */
-function printTrspeze(array $a): void
+function printTrapeze(array $a): void
 {
     echo "
     <table width=200 border=1 bordercolor=darkgrey cellspacing=0 cellpadding=5>
@@ -208,7 +208,7 @@ function printTrspeze(array $a): void
     echo "</table>";
 }
 
-printTrspeze($my_trapeze);
+printTrapeze($my_trapeze);
 echo EMPTY_LINE;
 
 /**
