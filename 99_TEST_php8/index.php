@@ -1,5 +1,7 @@
 <?php // phpcs:ignore PSR1.Files.SideEffects.FoundWithSymbols
 
+echo "<pre>";
+
 
 
 // phpcs:ignore PSR2.Files.ClosingTag.NotAllowed
