@@ -15,7 +15,7 @@ define('TEXT_FILE', 'text-file.txt');
 
 // code here
 
-echo "test 4"
+echo "tag test 2";
 
 // phpcs:ignore PSR2.Files.ClosingTag.NotAllowed
 ?>
